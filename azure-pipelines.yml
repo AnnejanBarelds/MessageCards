@@ -27,6 +27,6 @@ steps:
     packagesToPack: '**/MessageCards.csproj'
     nobuild: true
     versioningScheme: 'byEnvVar'
-    versionEnvVar: 'BUILD_VERSION'
+    versionEnvVar: 'Version_build'
 
 - task: PublishBuildArtifacts@1
