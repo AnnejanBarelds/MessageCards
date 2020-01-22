@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+variables:
+  BuildConfiguration: 'Release'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    arguments: '--configuration $(BuildConfiguration)  --output $(build.artifactstagingdirectory)'
+
+- task: VersionReaderTask@1
+  inputs:
+    searchPattern: '**\MessageCards.csproj'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/MessageCards.csproj'
+    nobuild: true
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'BUILD_VERSION'
+
+- task: PublishBuildArtifacts@1
