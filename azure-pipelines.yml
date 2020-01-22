@@ -17,4 +17,16 @@ steps:
   inputs:
     arguments: '--configuration $(BuildConfiguration)  --output $(build.artifactstagingdirectory)'
 
+- task: VersionReaderTask@1
+  inputs:
+    searchPattern: '**\MessageCards.csproj'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/MessageCards.csproj'
+    nobuild: true
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'BUILD_VERSION'
+
 - task: PublishBuildArtifacts@1
