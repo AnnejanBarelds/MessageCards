@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Annejan Barelds</Authors>
+    <Description>A small library to help create MessageCards and post them to a webhook. Useful in conjunction with Microsoft Teams for as long as Teams doesn't support AdaptiveCards for webhooks.</Description>
+    <RepositoryUrl>https://github.com/AnnejanBarelds/MessageCards</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
