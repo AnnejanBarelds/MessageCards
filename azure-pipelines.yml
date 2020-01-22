@@ -15,7 +15,7 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
-    arguments: '--configuration $(BuildConfiguration)  --output $(build.artifactstagingdirectory)'
+    arguments: '--configuration $(BuildConfiguration)'
 
 - task: VersionReaderTask@1
   inputs:
