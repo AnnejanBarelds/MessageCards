@@ -12,7 +12,7 @@ namespace MessageCards.Webhooks
 
         public Webhook(string url) : this(url, null) { }
 
-        internal Webhook(string url, HttpMessageHandler handler = null, bool disposeHandler = true)
+        public Webhook(string url, HttpMessageHandler handler = null, bool disposeHandler = true)
         {
             if (!Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out Uri uriResult) || (uriResult.Scheme != Uri.UriSchemeHttp && uriResult.Scheme != Uri.UriSchemeHttps))
             {
